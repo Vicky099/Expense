@@ -9,8 +9,8 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.new(user_params)
     if @user.save
       set_role(@user)
-      flash[:success] = 'User registered successfully.'
-       redirect_to new_user_session_path
+      flash[:success] = 'For accessing your account you must have to confirm your account. Comfirmation link sent to your registered email address.'
+      redirect_to new_user_session_path
     else
       flash[:danger] = 'User not registered successfully.'
       render action: :new
