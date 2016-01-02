@@ -1,0 +1,23 @@
+%section.content-header
+  %h1
+    Update Income
+    %small Source
+  %ol.breadcrumb
+    %li
+      %a
+        %i.fa.fa-dashboard
+        Home
+    %li.active Update Income
+%hr
+%section.content
+  .box.box-success
+    .box-header
+      %h4
+        Update Income Information
+    .box-body
+      = form_for @income, :url => income_path, :method => :put, :html => {:class => "form-horizontal", :id => "income_form"} do |f|
+        = f.hidden_field :user_id, :value => current_user.id 
+        = render :partial => 'form', :locals => {:f => f }
+        .box-footer
+          .col-md-offset-1
+            = f.submit "Update Income", :class => "btn btn-success"    

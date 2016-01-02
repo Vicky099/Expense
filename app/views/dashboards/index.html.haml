@@ -1,0 +1,56 @@
+%section.content-header
+  %h1
+    Dashboard
+    %small Control panel
+  %ol.breadcrumb
+    %li
+      %a
+        %i.fa.fa-dashboard
+        Home
+    %li.active Dashboard
+%hr
+%section.content
+  .row
+    .col-lg-3.col-xs-6
+      .small-box.bg-aqua
+        .inner
+          %h3
+            = "#{total_balance(current_user)}"
+          %p Total Balance
+        .icon
+          %i.fa.fa-rupee
+        %a.small-box-footer{:href => "/transaction_records/total_balance"}
+          More info
+          %i.fa.fa-arrow-circle-right
+    .col-lg-3.col-xs-6
+      .small-box.bg-green
+        .inner
+          %h3
+            ="#{total_income(current_user)}"
+          %p Total Income
+        .icon
+          %i.fa.fa-rupee
+        %a.small-box-footer{:href => "/incomes"}
+          More info
+          %i.fa.fa-arrow-circle-right
+    .col-lg-3.col-xs-6
+      .small-box.bg-yellow
+        .inner
+          %h3
+            ="#{total_expense(current_user)}"
+          %p Total Expense
+        .icon
+          %i.fa.fa-rupee
+        %a.small-box-footer{:href => "/expenses"}
+          More info
+          %i.fa.fa-arrow-circle-right
+    .col-lg-3.col-xs-6
+      .small-box.bg-red
+        .inner
+          %h3 Download
+          %p Reports
+        .icon
+          %i.fa.fa-file
+        %a.small-box-footer{:href => "/transaction_records/total_balance"}
+          More info
+          %i.fa.fa-arrow-circle-right

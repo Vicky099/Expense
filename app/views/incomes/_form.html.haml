@@ -1,0 +1,15 @@
+.form-group
+  .col-md-4.col-md-offset-1
+    = f.label :amount, :class => "control-label"
+  .col-md-5
+    = f.text_field :amount, :class => "form-control"
+.form-group
+  .col-md-4.col-md-offset-1
+    = f.label :date, :class => "control-label"
+  .col-md-5
+    = f.date_field :date, :class => "form-control"
+.form-group
+  .col-md-4.col-md-offset-1
+    = f.label "select Category", :class => "control-label"
+  .col-md-5
+    = f.collection_select :income_category_id, IncomeCategory.all, :id, :income_source, {:prompt => "Select Category"}, {:class => "form-control"}

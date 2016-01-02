@@ -1,0 +1,35 @@
+%section.content-header
+  %h1
+    Expense Category
+    %small Record
+  %ol.breadcrumb
+    %li
+      %a
+        %i.fa.fa-dashboard
+        Home
+    %li.active Expense Category
+%hr
+%section.content
+  .box.box-success
+    .box-header
+      %h4
+        Expense Category Racords 
+    .box-body
+      = link_to "Add your Expense Categories", category_expenses_path, :class => "btn btn-sm btn-default"
+      %br
+      %br 
+      %table.table.table-responsive.table-bordered
+        - if @expense_category.empty?
+          = "No any Expense Record"
+        - else
+          %tr
+            %th Expense Category
+            %th Description
+            %th Actions
+          - @expense_category.each do |expense_category|  
+            %tr
+              %td= expense_category.expense_source
+              %td= expense_category.description
+              %td
+                = link_to "Edit Record" , "#" 
+    = will_paginate @expense_category , renderer: BootstrapPagination::Rails           

@@ -1,0 +1,31 @@
+%section.content-header
+  %h1
+    Expense
+    %small Category
+  %ol.breadcrumb
+    %li
+      %a
+        %i.fa.fa-dashboard
+        Home
+    %li.active Expense Category
+%hr
+%section.content
+  .box.box-success
+    .box-header
+      %h4
+        Add Expense Category
+    .box-body
+      = form_for @expense_category, :url => save_expense_category_expenses_path, :method => :post, :html => {:class => "form-horizontal", :id => "category"} do |f|
+        .form-group
+          .col-md-4.col-md-offset-1
+            = f.label :expense_source, :class => "control-label"
+          .col-md-5
+            = f.text_field :expense_source, :class => "form-control"
+        .form-group
+          .col-md-4.col-md-offset-1
+            = f.label :description, :class => "control-label"
+          .col-md-5
+            = f.text_field :description, :class => "form-control"  
+        .box-footer
+          .col-md-offset-1
+            = f.submit "Submit", :class => "btn btn-success"

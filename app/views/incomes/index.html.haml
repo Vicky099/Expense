@@ -1,0 +1,37 @@
+%section.content-header
+  %h1
+    Income
+    %small Record
+  %ol.breadcrumb
+    %li
+      %a
+        %i.fa.fa-dashboard
+        Home
+    %li.active Income Record
+%hr
+%section.content
+  .box.box-success
+    .box-header
+      %h4
+        Income Records
+    .box-body
+      = link_to "Add Income", new_income_path, :class => "btn btn-sm btn-default"
+      %br
+      %br 
+      %table.table.table-responsive.table-bordered
+        - if @incomes.empty?
+          = "No any Income Record"
+        - else
+          %tr
+            %th Income Category
+            %th Amount
+            %th Credited Date
+            %th Actions
+          - @incomes.each do |income|  
+            %tr
+              %td= income.income_category.income_source
+              %td= income.amount
+              %td= income.date
+              %td
+                = link_to "Edit Record" , edit_income_path(income.id) 
+    = will_paginate @incomes , renderer: BootstrapPagination::Rails

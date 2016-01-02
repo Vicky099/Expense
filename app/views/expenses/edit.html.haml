@@ -1,0 +1,23 @@
+%section.content-header
+  %h1
+    Update Expense
+    %small Source
+  %ol.breadcrumb
+    %li
+      %a
+        %i.fa.fa-dashboard
+        Home
+    %li.active Update Expense
+%hr
+%section.content
+  .box.box-success
+    .box-header
+      %h4
+        Update Expense Information
+    .box-body
+      = form_for @expense, :url => expense_path, :method => :put, :html => {:class => "form-horizontal", :id => 'expense_form'} do |f|
+        = f.hidden_field :user_id, :value => current_user.id
+        = render :partial => 'form', :locals => { :f => f}
+        .box-footer
+          .col-md-offset-1
+            = f.submit "Update Expense", :class => "btn btn-success"    
