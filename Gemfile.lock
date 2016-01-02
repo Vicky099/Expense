@@ -95,7 +95,7 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
     pdf-core (0.5.1)
-    pg (0.18.2)
+    pg (0.18.4)
     prawn (2.0.1)
       pdf-core (~> 0.5.1)
       ttfunk (~> 1.4.0)
@@ -204,7 +204,7 @@ DEPENDENCIES
   jquery-validation-rails
   mysql2 (~> 0.3.19)
   nested_form
-  pg
+  pg (~> 0.18.4)
   prawn
   prawn-table
   rails (= 4.2.1)
