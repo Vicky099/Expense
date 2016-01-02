@@ -78,7 +78,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   # Email configuration
-  config.action_mailer.default_url_options = { :host => 'http://expense.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'http://vexpense-prod.herokuapp.com' }
   
   # Email configuration
   config.action_mailer.delivery_method = :smtp
