@@ -1,4 +1,3 @@
-<h2></h2>
 <section class="content-header">
 	<h1>Change your password </h1>
 </section>
@@ -29,12 +28,12 @@
 				<div class="col-md-3 col-md-offset-1">
 					<%= f.label :password_confirmation, "Confirm new password", :class => "control-label" %>
 				</div>
-				<div>
+				<div class="col-md-5">
 					<%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control" %>
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-md-5">
+				<div class="col-md-5 col-md-offset-1">
 					<%= f.submit "Change my password", :class => "btn btn-sm btn-success" %>
 				</div>
 			</div>
