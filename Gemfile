@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-ruby '2.2.2'
+ruby '2.3.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
@@ -25,7 +25,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'mysql2', '~> 0.3.19'
+#gem 'mysql2', '~> 0.3.19'
+gem 'pg', '~> 0.18.4'
 gem 'haml'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
@@ -61,5 +62,4 @@ end
 group :production do
   gem 'unicorn'
   gem 'rails_12factor'
-  gem 'pg', '~> 0.18.4'
 end

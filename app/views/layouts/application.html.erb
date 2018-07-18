@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Expincpro</title>
-		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<title>Income Expense | Management</title>
 		<%= csrf_meta_tags %>
+		<meta name="turbolinks-visit-control" content="reload">
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+		<!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 	</head>
-	<body class="hold-transition skin-blue sidebar-mini" data-no-turbolink = "true">
+	<body class="hold-transition skin-blue sidebar-mini">
 		<div class="wrapper">
 			<%= render :partial => "shared/navigation_bar"%>
 			<div class="content-wrapper">
