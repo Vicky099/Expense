@@ -13,11 +13,11 @@
   .box.box-success
     .box-header
       %h4
-        Income Category Racords 
+        Income Category Racords
     .box-body
       = link_to "Add your Income Categories", category_incomes_path, :class => "btn btn-sm btn-default"
       %br
-      %br 
+      %br
       %table.table.table-responsive.table-bordered
         - if @income_category.empty?
           = "No any Income Category Record"
@@ -26,10 +26,10 @@
             %th income Category
             %th Description
             %th Actions
-          - @income_category.each do |income_category|  
+          - @income_category.each do |income_category|
             %tr
               %td= income_category.income_source
               %td= income_category.description
               %td
-                = link_to "Edit Record" , "#" 
-    = will_paginate @income_category , renderer: BootstrapPagination::Rails           
+                = link_to "Edit Record" , "#"
+    = will_paginate @income_category , renderer: BootstrapPagination::Rails
