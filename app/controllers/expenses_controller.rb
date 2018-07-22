@@ -10,9 +10,9 @@ class ExpensesController < ApplicationController
   end
 
   def create
-    expense = Expense.new(expense_params)
-    if expense.save
-      expense.build_transaction_record(process_id: expense.id, process_type: expense.class.name, user_id: expense.user_id, record_name: expense.expense_category.expense_source).save
+    @expense = Expense.new(expense_params)
+    @expense.build_transaction_record(process_id: @expense.id, process_type: @expense.class.name, user_id: @expense.user_id, record_name: @expense.expense_category.present? ? @expense.expense_category.expense_source : '')
+    if @expense.save
       flash[:success] = "Expenses added successfully."
       redirect_to expenses_path
     else
@@ -58,7 +58,7 @@ class ExpensesController < ApplicationController
   private
 
   def expense_params
-    params.require(:expense).permit(:amount, :date, :expense_category_id, :user_id, :description)
+    params.require(:expense).permit(:amount, :date, :expense_category_id, :user_id, :description, :_destroy)
   end
 
   def expense_category_params

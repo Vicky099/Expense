@@ -10,14 +10,14 @@ class IncomesController < ApplicationController
   end
 
   def create
-    income = Income.new(income_params)
-    if income.save
-      income.build_transaction_record(process_id: income.id, process_type: income.class.name, user_id: income.user_id, record_name: income.income_category.income_source).save
+    @income = Income.new(income_params)
+    @income.build_transaction_record(process_id: @income.id, process_type: @income.class.name, user_id: @income.user_id, record_name: @income.income_category.present? ? @income.income_category.income_source : '')
+    if @income.save
       flash[:success] = 'Income added successfully.'
       redirect_to incomes_path
     else
       flash[:danger] = 'Something went wrong. income not added.'
-      render :incomes
+      render :new
     end
   end
 
@@ -58,7 +58,7 @@ class IncomesController < ApplicationController
   private
 
   def income_params
-    params.require(:income).permit(:amount, :date, :income_category_id, :user_id, :description)
+    params.require(:income).permit(:amount, :date, :income_category_id, :user_id, :description, :_destroy)
   end
 
   def category_params
