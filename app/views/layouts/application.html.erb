@@ -11,22 +11,19 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 	</head>
 	<body class="hold-transition skin-blue sidebar-mini">
-		<div class="wrapper">
-			<%= render :partial => "shared/navigation_bar"%>
-			<div class="content-wrapper">
-				<div>
-					<%= render "shared/messages.html.haml"%>
-					<%= yield %>
-				</div>
-			</div>
-			<footer class="main-footer">
-				<div class="pull-right hidden-xs">
-					<b>Designed by </b>
-					Vikram
-				</div>
-				<strong> Copyright &copy; 2015-2016
-				All rights reserved.
-			</footer>
-		</div>
-	</body>
+    <div class="wrapper">
+    	<%= render :partial => '/shared/navigation_bar' %>
+    	<% if user_signed_in? %>
+    		<%= render :partial => '/shared/side_bar' %>
+    	<% end %>
+    	<div class="content-wrapper">
+      	<%= render "shared/messages" %>
+      	<section class="content">
+        	<%= yield %>
+      	</section>
+    	</div>
+    	<%= render :partial => '/shared/footer' %>
+    	<div class="control-sidebar-bg"></div>
+  	</div>
+  </body>
 </html>

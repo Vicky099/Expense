@@ -38,6 +38,7 @@ gem 'sprockets-rails'
 gem 'prawn'
 gem 'prawn-table'
 gem "jquery-validation-rails"
+gem 'pry'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
