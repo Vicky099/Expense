@@ -13,3 +13,8 @@
     = f.label "select Category", :class => "control-label"
   .col-md-5
     = f.collection_select :expense_category_id, ExpenseCategory.all, :id, :expense_source, {:prompt => "Select Category"}, {:class => "form-control"}
+.form-group
+  .col-md-4.col-md-offset-1
+    = f.label "Description", :class => "control-label"
+  .col-md-5
+    = f.text_area :description, class: 'form-control'

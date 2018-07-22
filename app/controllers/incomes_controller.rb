@@ -4,11 +4,11 @@ class IncomesController < ApplicationController
   def index
     @incomes = Income.where('user_id =?', current_user.id).paginate(:page => params[:page], :per_page => 15)
   end
-  
+
   def new
     @income = Income.new
   end
-  
+
   def create
     income = Income.new(income_params)
     if income.save
@@ -24,7 +24,7 @@ class IncomesController < ApplicationController
   def edit
     @income = Income.find(params[:id])
   end
-  
+
   def update
     @income = Income.find(params[:id])
     if @income.update_attributes(income_params)
@@ -35,34 +35,34 @@ class IncomesController < ApplicationController
       render :edit
     end
   end
-  
+
   def category
     @income_category= IncomeCategory.new
   end
-  
+
   def save_income_category
     @income_category= IncomeCategory.new(category_params)
     if @income_category.save
       flash[:success] = 'Category Added successfully.'
-      redirect_to category_incomes_path 
+      redirect_to category_incomes_path
     else
       flash[:danger] = 'Something went wrong to add category.'
       render :category
     end
   end
-  
+
   def all_income_category
     @income_category = IncomeCategory.all.paginate(:page => params[:page], :per_page => 15)
   end
-  
+
   private
-  
+
   def income_params
-    params.require(:income).permit(:amount, :date, :income_category_id, :user_id)
+    params.require(:income).permit(:amount, :date, :income_category_id, :user_id, :description)
   end
-  
+
   def category_params
-    params.require(:income_category).permit(:income_source, :description)  
+    params.require(:income_category).permit(:income_source, :description)
   end
-  
+
 end

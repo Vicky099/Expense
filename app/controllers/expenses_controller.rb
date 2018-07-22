@@ -1,14 +1,14 @@
 class ExpensesController < ApplicationController
-  
+
   before_filter :authenticate_user!
   def index
     @expenses = Expense.where('user_id =?', current_user.id).paginate(:page => params[:page], :per_page => 15)
   end
-  
+
   def new
     @expense = Expense.new
   end
-  
+
   def create
     expense = Expense.new(expense_params)
     if expense.save
@@ -20,11 +20,11 @@ class ExpensesController < ApplicationController
       render :new
     end
   end
-  
+
   def edit
     @expense = Expense.find(params[:id])
   end
-  
+
   def update
     @expense = Expense.find(params[:id])
     if @expense.update_attributes(expense_params)
@@ -35,11 +35,11 @@ class ExpensesController < ApplicationController
       render :edit
     end
   end
-  
+
   def category
    @expense_category = ExpenseCategory.new
   end
-  
+
   def save_expense_category
     @expense_category = ExpenseCategory.new(expense_category_params)
     if @expense_category.save
@@ -50,19 +50,19 @@ class ExpensesController < ApplicationController
       render :category
     end
   end
-  
+
   def all_expense_category
     @expense_category = ExpenseCategory.all.paginate(:page => params[:page], :per_page => 15)
   end
-  
-  private 
-  
+
+  private
+
   def expense_params
-    params.require(:expense).permit(:amount, :date, :expense_category_id, :user_id)
+    params.require(:expense).permit(:amount, :date, :expense_category_id, :user_id, :description)
   end
-  
+
   def expense_category_params
     params.require(:expense_category).permit(:expense_source, :description)
   end
-  
+
 end

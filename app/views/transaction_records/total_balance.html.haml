@@ -1,6 +1,6 @@
 %section.content-header
   %h1
-    Income and Expense 
+    Income and Expense
     %small History
   %ol.breadcrumb
     %li
@@ -26,7 +26,7 @@
           .col-md-3
             = f.date_field :date_to, :class => "form-control"
           .col-md-2
-            = f.submit "Download", :class => "btn btn-sm btn-default control-label"
+            = f.submit "Download", :class => "btn btn-sm btn-default control-label", :formtarget => "_blank"
 
 %section.content
   .box.box-success
@@ -43,13 +43,13 @@
             %th Category
             %th Amount
             %th Process Date
-          - @transaction_records.each do |record|  
+          - @transaction_records.each do |record|
             %tr
               %td= record.process_type
               - if record.process_type == 'Income'
-                - category = record.process.income_category.income_source
+                - category = record.process.income_category.income_source.to_s+' - '+record.process.description.to_s
               - elsif record.process_type == 'Expense'
-                - category = record.process.expense_category.expense_source
+                - category = record.process.expense_category.expense_source.to_s+' - '+record.process.description.to_s
               %td= category
               %td= record.process.amount
               %td= record.process.date
