@@ -29,8 +29,9 @@ class TransactionRecordsController < ApplicationController
             end
           end
         end
+        filename = "00#{current_user.id}#{Time.now.strftime("%Y%m%d%H%M%S")}.pdf"
         pdf.table(table_data, :width => 500, :cell_style => { :inline_format => true })
-        send_data pdf.render, filename: 'test.pdf', type: 'application/pdf', :disposition => 'inline'
+        send_data pdf.render, filename: filename, type: 'application/pdf', :disposition => 'inline'
       end
     end
   end
