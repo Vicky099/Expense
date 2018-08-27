@@ -61,7 +61,7 @@ class IncomesController < ApplicationController
     expense, is_valid = check_refund(@income)
     if is_valid && @income.save && expense.save
       flash[:success] = "Refund processed successfully."
-      redirect_to incomes_path
+      redirect_to refund_income_logs_expense_path(expense.id)
     else
       flash[:alert] = "We are sorry but something is not good. Please check the refund details again."
       redirect_to refund_history_expenses_path
