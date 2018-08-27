@@ -1,7 +1,7 @@
 class TransactionRecordsController < ApplicationController
   before_filter :authenticate_user!
   def total_balance
-    @transaction_records = TransactionRecord.where('user_id =?', current_user.id).paginate(:page => params[:page], :per_page => 15)
+    @transaction_records = current_user.transaction_records.order('id DESC').paginate(:page => params[:page], :per_page => 15)
   end
 
   def report
@@ -11,7 +11,7 @@ class TransactionRecordsController < ApplicationController
   def download_pdf
     from = params[:record][:date_from] == '' ? Time.now.strftime('%Y-%m-%d') : params[:record][:date_from]
     to = params[:record][:date_to] == '' ? Time.now.strftime('%Y-%m-%d') : params[:record][:date_to]
-    @record = TransactionRecord.where('user_id=?', current_user.id)
+    @record = current_user.transaction_records
     respond_to do |format|
       format.pdf do
         pdf = Prawn::Document.new

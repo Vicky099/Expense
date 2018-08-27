@@ -1,0 +1,91 @@
+<section class="content-header">
+  <h1>
+    Income and Expense
+    <small>History</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a>
+        <i class="fa fa-dashboard"></i>
+        Home
+      </a>
+    </li>
+    <li class="active">Income and expense</li>
+  </ol>
+</section>
+<hr/>
+<section class="content-header">
+  <div class="box box-success">
+    <div class="box-header">
+      <h4>
+        Download Transaction History in PDF Format
+      </h4>
+      <%= form_for :record, :url => download_pdf_transaction_records_path(:format => 'pdf'), :method => :post, :html => {:class => "form-horizontal", :id => "download_record"} do |f| %>
+        <div class="form-group">
+          <div class="col-md-2">
+            <%= f.label "Date From :", :class => "control-label" %>
+          </div>
+          <div class="col-md-3">
+            <%= f.date_field :date_from, :class => "form-control" %>
+          </div>
+          <div class="col-md-2">
+            <%= f.label "Date To :", :class => "control-label" %>
+          </div>
+          <div class="col-md-3">
+            <%= f.date_field :date_to, :class => "form-control" %>
+          </div>
+          <div class="col-md-2">
+            <%= f.submit "Download", :class => "btn btn-sm btn-default control-label", :formtarget => "_blank" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+<section class="content">
+  <div class="box box-success">
+    <div class="box-header">
+      <h4>
+        Total Transaction History
+      </h4>
+    </div>
+    <div class="box-body">
+      <table class="table table-responsive table-bordered">
+        <% if @transaction_records.empty? %>
+          <%= "No any Income and Expense Record" %>
+        <% else %>
+          <tr>
+            <th>Process Type</th>
+            <th>Category</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Process Date</th>
+          </tr>
+          <% @transaction_records.each do |record| %>
+            <tr>
+              <td>
+                <%= record.process_type %>
+              </td>
+              <% if record.process_type == 'Income' %>
+                <% category = record.process.income_category.income_source.to_s+' - '+record.process.description.to_s %>
+              <% elsif record.process_type == 'Expense' %>
+                <% category = record.process.expense_category.expense_source.to_s+' - '+record.process.description.to_s %>
+              <% end %>
+              <td>
+                <%= category %>
+              </td>
+              <td><%= type_of_money(record.process) %></td>
+              <td>
+                <%= record.process.amount %>
+              </td>
+              <td>
+                <%= record.process.date %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+    <%= will_paginate @transaction_records , renderer: BootstrapPagination::Rails %>
+  </div>
+</section>
