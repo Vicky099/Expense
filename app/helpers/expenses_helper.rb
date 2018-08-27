@@ -15,10 +15,12 @@ module ExpensesHelper
 	end
 
 	def refund_status(expense)
-		if is_refunded(expense)
-			return strip_tags("<p class='text-green'>Refund done</p>")
-		else
-			return strip_tags("<p class='text-red'>Refund pending</p>")
+		if expense.refundable?
+			if is_refunded(expense)
+				return strip_tags("<p class='text-green'> - Refund done</p>")
+			else
+				return strip_tags("<p class='text-red'> - Refund pending</p>")
+			end
 		end
 	end
 end

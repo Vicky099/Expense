@@ -4,7 +4,7 @@ class ExpensesController < ApplicationController
   before_action :current_expense_record, only: [:edit, :update, :refund_process]
 
   def index
-    @expenses = current_user.expenses.order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
+    @expenses = current_user.expenses.order('id DESC').paginate(:page => params[:page], :per_page => 15)
   end
 
   def new
