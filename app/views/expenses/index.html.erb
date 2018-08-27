@@ -1,0 +1,67 @@
+<section class="content-header">
+  <h1>
+    Expense
+    <small>Record</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a>
+        <i class="fa fa-dashboard"></i>
+        Home
+      </a>
+    </li>
+    <li class="active">Expense Record</li>
+  </ol>
+</section>
+<hr/>
+<section class="content">
+  <div class="box box-success">
+    <div class="box-header">
+      <h4>
+        Expense Records
+      </h4>
+    </div>
+    <div class="box-body">
+      <%= link_to "Add your expenses", new_expense_path, :class => "btn btn-sm btn-default" %>
+      <br/>
+      <br/>
+      <table class="table table-responsive table-bordered">
+        <% if @expenses.empty? %>
+          <%= "No any Expense Record" %>
+        <% else %>
+          <tr>
+            <th>Expense Category</th>
+            <th>Amount</th>
+            <th>Refundable</th>
+            <th>Deposite Date</th>
+            <th>Actions</th>
+          </tr>
+          <% @expenses.each do |expense| %>
+            <tr>
+              <td>
+                <%= expense.expense_category.expense_source.to_s+' - '+expense.description.to_s %>
+              </td>
+              <td>
+                <% if expense.refundable? && expense.remain_amount > 0 %>
+                  <%= "Amt : #{expense.amount}, Remain : #{expense.remain_amount}" %>
+                <% else %>
+                  <%= expense.amount %>
+                <% end %>
+              </td>
+              <td>
+                <%= expense.refundable.to_s+' - '+refund_status(expense).to_s.titleize %>
+              </td>
+              <td>
+                <%= expense.date %>
+              </td>
+              <td>
+                <%= link_to "Edit Record" , edit_expense_path(expense.id) %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+    <%= will_paginate @expenses , renderer: BootstrapPagination::Rails %>
+  </div>
+</section>

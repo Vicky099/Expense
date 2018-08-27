@@ -1,0 +1,62 @@
+<section class="content-header">
+  <h1>
+    Refund
+    <small>Income Logs</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a>
+        <i class="fa fa-dashboard"></i>
+        Home
+      </a>
+    </li>
+    <li>Expense</li>
+    <li class="active">Refund Income Logs</li>
+  </ol>
+</section>
+<hr/>
+<section class="content-header">
+  <p>
+    <b>Information : </b>
+    <span class="text-green">Total Amount - Rs. <%= @expense.amount.to_f %> | </span>
+    <span class="text-red">Total Refund - Rs. <%= @refund_incomes.pluck(:amount).sum.to_f %> | </span>
+    <span class="text-blue">Outstanding Amount - Rs. <%= @expense.remain_amount.to_f %></span>
+  </p>
+
+</section>
+<section class="content">
+  <div class="box box-success">
+    <div class="box-header">
+      <h4>
+        Refund Income
+      </h4>
+    </div>
+    <div class="box-body">
+      <table class="table table-responsive table-bordered">
+        <% if @refund_incomes.empty? %>
+          <%= "No any Refund Record" %>
+        <% else %>
+          <tr>
+            <th>Income Category</th>
+            <th>Amount</th>
+            <th>Deposite Date</th>
+          </tr>
+          <% @refund_incomes.each do |refund| %>
+            <tr>
+              <td>
+                <%= refund.income_category.income_source.to_s+' - '+refund.description.to_s %>
+              </td>
+              <td>
+                <%= refund.amount %>
+              </td>
+              <td>
+                <%= refund.date %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+    <%= will_paginate @refund_incomes , renderer: BootstrapPagination::Rails %>
+  </div>
+</section>

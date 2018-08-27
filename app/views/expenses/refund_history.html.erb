@@ -29,7 +29,7 @@
         <% else %>
           <tr>
             <th>Expense Category</th>
-            <th>Amount</th>
+            <th>Refund Amount</th>
             <th>Deposite Date</th>
             <th>Actions</th>
           </tr>
@@ -46,10 +46,11 @@
               </td>
               <td>
                 <% if is_refunded(refund) %>
-                  <small class="text-green">Refund Done</small>
+                  <small class="label label-success">Refund Done</small>
                 <% else %>
                   <%= link_to "Procced for Refund" , refund_process_expense_path(refund.id), class: 'btn btn-xs btn-primary' %>
                 <% end %>
+                <%= link_to 'History', refund_income_logs_expense_path(refund.id), class: 'btn btn-xs btn-default' %>
               </td>
             </tr>
           <% end %>

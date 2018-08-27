@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     end
     member do
       get :refund_process
+      get :refund_income_logs
     end
   end
 

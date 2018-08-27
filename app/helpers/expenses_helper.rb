@@ -17,10 +17,12 @@ module ExpensesHelper
 	def refund_status(expense)
 		if expense.refundable?
 			if is_refunded(expense)
-				return strip_tags("<p class='text-green'> - Refund done</p>")
+				return "Refund done"
 			else
-				return strip_tags("<p class='text-red'> - Refund pending</p>")
+				return "Refund pending"
 			end
+		else
+			return 'Direct'
 		end
 	end
 end
