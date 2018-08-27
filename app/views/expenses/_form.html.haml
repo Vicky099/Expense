@@ -18,3 +18,8 @@
     = f.label "Description", :class => "control-label"
   .col-md-5
     = f.text_area :description, class: 'form-control'
+.checkbox
+  .col-md-12.col-md-offset-1
+    = f.check_box :refundable, {}, "YES", "NO"
+    = f.label "Is this amount refundable? (Check for YES & Uncheck for NO)", class: 'text-red'
+

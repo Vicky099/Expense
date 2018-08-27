@@ -24,12 +24,14 @@
         - else
           %tr
             %th Income Category
+            %th Amount Type
             %th Amount
             %th Credited Date
             %th Actions
           - @incomes.each do |income|
             %tr
               %td= income.income_category.income_source.to_s+' - '+income.description.to_s
+              %td= income.amount_type.titleize
               %td= income.amount
               %td= income.date
               %td

@@ -1,0 +1,61 @@
+<section class="content-header">
+  <h1>
+    Refund
+    <small>Histories</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a>
+        <i class="fa fa-dashboard"></i>
+        Home
+      </a>
+    </li>
+    <li>Expense</li>
+    <li class="active">Refund History</li>
+  </ol>
+</section>
+<hr/>
+<section class="content">
+  <div class="box box-success">
+    <div class="box-header">
+      <h4>
+        Refund History
+      </h4>
+    </div>
+    <div class="box-body">
+      <table class="table table-responsive table-bordered">
+        <% if @refunds.empty? %>
+          <%= "No any Refund Record" %>
+        <% else %>
+          <tr>
+            <th>Expense Category</th>
+            <th>Amount</th>
+            <th>Deposite Date</th>
+            <th>Actions</th>
+          </tr>
+          <% @refunds.each do |refund| %>
+            <tr>
+              <td>
+                <%= refund.expense_category.expense_source.to_s+' - '+refund.description.to_s %>
+              </td>
+              <td>
+                <%= refund.remain_amount %>
+              </td>
+              <td>
+                <%= refund.date %>
+              </td>
+              <td>
+                <% if is_refunded(refund) %>
+                  <small class="text-green">Refund Done</small>
+                <% else %>
+                  <%= link_to "Procced for Refund" , refund_process_expense_path(refund.id), class: 'btn btn-xs btn-primary' %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+    <%= will_paginate @refunds , renderer: BootstrapPagination::Rails %>
+  </div>
+</section>

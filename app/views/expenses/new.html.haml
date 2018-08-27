@@ -14,10 +14,12 @@
     .box-header
       %h4
         Add Expense Information
+    %hr
     .box-body
       = form_for @expense, :url => expenses_path, :method => :post, :html => {:class => "form-horizontal", :id => "expense_form"} do |f|
         = f.hidden_field :user_id, :value => current_user.id
         = render :partial => 'form', :locals => { :f => f}
+        %br
         .box-footer
           .col-md-offset-1
-            = f.submit "Add Expense", :class => "btn btn-success"    
+            = f.submit "Add Expense", :class => "btn btn-success"

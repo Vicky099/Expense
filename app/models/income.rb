@@ -9,4 +9,11 @@ class Income < ActiveRecord::Base
  	validates :date, presence: true
  	validates :description, presence: true
  	validates :user_id, presence: true
+
+ 	enum amount_type: {direct: '0', refund: '1'}
+ 	enum refund_type: {full: '0', partial: '1'}
+
+ 	def expense_record
+ 		return Expense.where('user_id=? and id=?',self.user_id,self.expense_id).first
+ 	end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180722014350) do
+ActiveRecord::Schema.define(version: 20180826053648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,9 @@ ActiveRecord::Schema.define(version: 20180722014350) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
+    t.string   "refundable"
+    t.string   "removed",             default: "NO"
+    t.integer  "remain_amount",       default: 0
   end
 
   create_table "income_categories", force: :cascade do |t|
@@ -50,6 +53,9 @@ ActiveRecord::Schema.define(version: 20180722014350) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
+    t.string   "amount_type",        default: "0"
+    t.integer  "expense_id"
+    t.string   "refund_type"
   end
 
   create_table "transaction_records", force: :cascade do |t|

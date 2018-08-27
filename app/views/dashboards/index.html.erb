@@ -1,0 +1,103 @@
+<section class="content-header">
+  <h1>
+    Dashboard
+    <small>Control panel</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a>
+        <i class="fa fa-dashboard"></i>
+        Home
+      </a>
+    </li>
+    <li class="active">Dashboard</li>
+  </ol>
+</section>
+<hr/>
+<section class="content">
+  <div class="row">
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <h3>
+            <%= "#{total_balance(current_user)}" %>
+          </h3>
+          <p>Total Balance</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-rupee"></i>
+        </div>
+        <a class="small-box-footer" href="/transaction_records/total_balance">
+          More info
+          <i class="fa fa-arrow-circle-right"></i>
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-green">
+        <div class="inner">
+          <h3>
+            <%= "#{total_income(current_user)}" %>
+          </h3>
+          <p>Total Income</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-rupee"></i>
+        </div>
+        <a class="small-box-footer" href="/incomes">
+          More info
+          <i class="fa fa-arrow-circle-right"></i>
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-yellow">
+        <div class="inner">
+          <h3>
+            <%= "#{total_expense(current_user)}" %>
+          </h3>
+          <p>Total Expense</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-rupee"></i>
+        </div>
+        <a class="small-box-footer" href="/expenses">
+          More info
+          <i class="fa fa-arrow-circle-right"></i>
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-blue">
+        <div class="inner">
+          <h3>
+            <%= "#{total_pending_refund(current_user)}" %>
+          </h3>
+          <p>Pending Refund</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-rupee"></i>
+        </div>
+        <a class="small-box-footer" href="/expenses/refund_history">
+          More info
+          <i class="fa fa-arrow-circle-right"></i>
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-red">
+        <div class="inner">
+          <h3>Download</h3>
+          <p>Reports</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-file"></i>
+        </div>
+        <a class="small-box-footer" href="/transaction_records/total_balance">
+          More info
+          <i class="fa fa-arrow-circle-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

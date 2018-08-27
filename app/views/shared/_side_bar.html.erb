@@ -1,0 +1,44 @@
+<aside class="main-sidebar">
+  <section class="sidebar">
+    <ul class="sidebar-menu">
+      <li class="header">MAIN NAVIGATION</li>
+      <li class="active treeview">
+        <%= link_to dashboards_path do %>
+          <i class="fa fa-dashboard"></i><span>Dashboard</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to incomes_path do %>
+          <i class="fa fa-plus"></i><span>Income</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to expenses_path do %>
+          <i class="fa fa-minus"></i><span>Expense</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to refund_history_expenses_path do %>
+          <i class="fa fa-undo"></i><span>Re-Fundable Amount</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to total_balance_transaction_records_path do %>
+          <i class="fa fa-file-text"></i><span>Transaction History</span>
+        <% end %>
+      </li>
+      <% if current_user.role == "admin" %>
+        <li>
+          <%= link_to all_income_category_incomes_path do %>
+            <i class="fa fa-calculator"></i><span>Income Category</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to all_expense_category_expenses_path do %>
+            <i class="fa fa-calculator"></i><span>Expense Category</span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</aside>

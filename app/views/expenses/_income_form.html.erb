@@ -1,0 +1,24 @@
+<div class="form-group">
+  <div class="col-md-4 col-md-offset-1">
+    <%= f.label :amount, :class => "control-label" %>
+  </div>
+  <div class="col-md-5">
+    <%= f.text_field :amount, :value => @expense.remain_amount, :class => "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-md-4 col-md-offset-1">
+    <%= f.label :date, :class => "control-label" %>
+  </div>
+  <div class="col-md-5">
+    <%= f.date_field :date, value: Date.today, :class => "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-md-4 col-md-offset-1">
+    <%= f.label "Description", :class => "control-label" %>
+  </div>
+  <div class="col-md-5">
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+</div>
