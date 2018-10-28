@@ -28,7 +28,7 @@
           <%= "No any Refund Record" %>
         <% else %>
           <tr>
-            <th>Expense Category</th>
+            <th>Category : Borrower</th>
             <th>Refund Amount</th>
             <th>Deposite Date</th>
             <th>Actions</th>
@@ -36,7 +36,8 @@
           <% @refunds.each do |refund| %>
             <tr>
               <td>
-                <%= refund.expense_category.expense_source.to_s+' - '+refund.description.to_s %>
+                <% borrower_name = refund.borrower.present? ? refund.borrower.name : '' %>
+                <%= refund.expense_category.expense_source.to_s+' - '+refund.description.to_s+' : '+borrower_name %>
               </td>
               <td>
                 <%= refund.remain_amount %>
