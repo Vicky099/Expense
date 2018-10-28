@@ -1,6 +1,6 @@
 class IncomesController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :current_income_record, only:[:edit,:update]
 
   def index

@@ -27,6 +27,11 @@
           <i class="fa fa-file-text"></i><span>Transaction History</span>
         <% end %>
       </li>
+      <li>
+        <%= link_to borrowers_path do %>
+          <i class="fa fa-file"></i><span>Borrowers List</span>
+        <% end %>
+      </li>
       <% if current_user.role == "admin" %>
         <li>
           <%= link_to all_income_category_incomes_path do %>

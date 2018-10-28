@@ -1,5 +1,5 @@
 class TransactionRecordsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   def total_balance
     @transaction_records = current_user.transaction_records.order('id DESC').paginate(:page => params[:page], :per_page => 15)
   end

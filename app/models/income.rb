@@ -4,7 +4,7 @@ class Income < ActiveRecord::Base
   has_one :transaction_record, as: :process, :dependent => :destroy
   accepts_nested_attributes_for :transaction_record
 
- 	validates :amount, presence: true
+ 	validates :amount, presence: true, numericality: true
  	validates :income_category_id, presence: true
  	validates :date, presence: true
  	validates :description, presence: true

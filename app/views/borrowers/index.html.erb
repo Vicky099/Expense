@@ -1,0 +1,59 @@
+<section class="content-header">
+  <h1>
+    Borrower
+    <small>Record</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a>
+        <i class="fa fa-dashboard"></i>
+        Home
+      </a>
+    </li>
+    <li class="active">Borrower Record</li>
+  </ol>
+</section>
+<hr/>
+<section class="content">
+  <div class="box box-success">
+    <div class="box-header">
+      <h4>
+        Borrower Records
+      </h4>
+    </div>
+    <div class="box-body">
+      <%= link_to "Add borrower", new_borrower_path, :class => "btn btn-sm btn-default" %>
+      <br/>
+      <br/>
+      <table class="table table-responsive table-bordered">
+        <% if @borrowers.empty? %>
+          <%= "No any borrower Record" %>
+        <% else %>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Relation</th>
+            <th>Actions</th>
+          </tr>
+          <% @borrowers.each do |borrower| %>
+            <tr>
+              <td>
+                <%= borrower.name %>
+              </td>
+              <td>
+                <%= borrower.email %>
+              </td>
+              <td>
+                <%= borrower.relation_with_payer %>
+              </td>
+              <td>
+                <%= link_to "Edit" , edit_borrower_path(borrower.id) %> / <%= link_to "Delete" , borrower_path(borrower.id), method: :delete %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+    <%= will_paginate @expenses , renderer: BootstrapPagination::Rails %>
+  </div>
+</section>

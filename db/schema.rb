@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180826053648) do
+ActiveRecord::Schema.define(version: 20181015032002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "borrowers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "contact_num"
+    t.string   "relation_with_payer"
+    t.integer  "user_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "borrowers", ["user_id"], name: "index_borrowers_on_user_id", using: :btree
 
   create_table "expense_categories", force: :cascade do |t|
     t.integer  "user_id"
@@ -35,7 +47,10 @@ ActiveRecord::Schema.define(version: 20180826053648) do
     t.string   "refundable"
     t.string   "removed",             default: "NO"
     t.integer  "remain_amount",       default: 0
+    t.integer  "borrower_id"
   end
+
+  add_index "expenses", ["borrower_id"], name: "index_expenses_on_borrower_id", using: :btree
 
   create_table "income_categories", force: :cascade do |t|
     t.integer  "user_id"

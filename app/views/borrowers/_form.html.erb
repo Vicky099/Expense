@@ -1,0 +1,35 @@
+<div class="form-group">
+  <div class="col-md-4 col-md-offset-1">
+    <%= f.label :name, :class => "control-label" %>
+  </div>
+  <div class="col-md-5">
+    <%= f.text_field :name, :class => "form-control" %>
+    <%= display_error_message(@errors, :name, 'Name') %>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-md-4 col-md-offset-1">
+    <%= f.label :email, :class => "control-label" %>
+  </div>
+  <div class="col-md-5">
+    <%= f.text_field :email, :class => "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-md-4 col-md-offset-1">
+    <%= f.label :contact_num, :class => "control-label" %>
+  </div>
+  <div class="col-md-5">
+    <%= f.text_field :contact_num, :class => "form-control" %>
+    <%= display_error_message(@errors, :contact_num, 'Contact Num') %>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-md-4 col-md-offset-1">
+    <%= f.label :relation_with_payer, :class => "control-label" %>
+  </div>
+  <div class="col-md-5">
+    <%= f.text_field :relation_with_payer, class: 'form-control' %>
+    <%= display_error_message(@errors, :relation_with_payer, 'Relation with Payer') %>
+  </div>
+</div>

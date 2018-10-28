@@ -15,4 +15,8 @@ module DashboardsHelper
   def total_pending_refund(user)
     return user.expenses.where('refundable=?','YES').pluck(:remain_amount).sum
   end
+
+  def total_borrowers_count(user)
+    return user.borrowers.count
+  end
 end

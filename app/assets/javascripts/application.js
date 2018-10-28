@@ -21,7 +21,7 @@
 //= require_tree .
 
 
-$(document).bind('page:change',function(){ 
+$(document).bind('page:change',function(){
   download_form();
   income_form();
   expense_record();
@@ -78,7 +78,7 @@ function income_form() {
 			}
 		},
 		errorPlacement : function(error, element) {
-			
+
 		}
 	});
 }
@@ -108,7 +108,7 @@ function expense_record(){
 			}
 		},
 		errorPlacement : function(error, element) {
-			
+
 		}
 	});
 }
@@ -132,7 +132,7 @@ function category_record(){
 			}
 		},
 		errorPlacement : function(error, element) {
-			
+
 		}
 	});
 }
@@ -156,7 +156,25 @@ function income_category(){
 			}
 		},
 		errorPlacement : function(error, element) {
-			
+
 		}
 	});
 }
+
+$(document).ready(function(){
+	var checked = $("#expense_refundable").is(':checked');
+	if(checked){
+		$(".borrower-div").show();
+	}else{
+		$(".borrower-div").hide();
+	}
+});
+
+$(document).on('click', '#expense_refundable', function(){
+	var checked = $("#expense_refundable").is(':checked');
+	if(checked){
+		$(".borrower-div").show();
+	}else{
+		$(".borrower-div").hide();
+	}
+});

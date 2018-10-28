@@ -1,6 +1,6 @@
 class ExpensesController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :current_expense_record, only: [:edit, :update, :refund_process, :refund_income_logs]
 
   def index
@@ -8,11 +8,11 @@ class ExpensesController < ApplicationController
   end
 
   def new
-    @expense = Expense.new
+    @expense = current_user.expenses.new
   end
 
   def create
-    @expense = Expense.new(expense_params)
+    @expense = current_user.expenses.new(expense_params)
     @expense.build_transaction_record(user_id: @expense.user_id, record_name: @expense.expense_category.present? ? @expense.expense_category.expense_source : '')
     @expense.remain_amount = @expense.amount.to_i if @expense.refundable?
     if @expense.save
@@ -73,7 +73,7 @@ class ExpensesController < ApplicationController
   private
 
   def expense_params
-    params.require(:expense).permit(:amount, :date, :expense_category_id, :user_id, :description, :refundable, :remain_amount, :_destroy)
+    params.require(:expense).permit(:amount, :date, :expense_category_id, :user_id, :description, :refundable, :remain_amount, :borrower_id, :_destroy)
   end
 
   def expense_category_params

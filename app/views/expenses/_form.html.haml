@@ -22,4 +22,9 @@
   .col-md-12.col-md-offset-1
     = f.check_box :refundable, {}, "YES", "NO"
     = f.label "Is this amount refundable? (Check for YES & Uncheck for NO)", class: 'text-red'
+.form-group.borrower-div
+  .col-md-4.col-md-offset-1
+    = f.label "Borrower Name", :class=> "control-label"
+  .col-md-5
+    = f.collection_select :borrower_id, current_user.borrowers, :id, :name, {:prompt => "Select Name"}, {:class=> "form-control"}
 

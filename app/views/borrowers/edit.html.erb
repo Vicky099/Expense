@@ -1,0 +1,37 @@
+<section class="content-header">
+  <h1>
+    Update Borrower
+    <small>Source</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a>
+        <i class="fa fa-dashboard"></i>
+        Home
+      </a>
+    </li>
+    <li>Borrower</li>
+    <li class="active">Update Borrower</li>
+  </ol>
+</section>
+<hr/>
+<section class="content">
+  <div class="box box-success">
+    <div class="box-header">
+      <h4>
+        Update Borrower Information
+      </h4>
+    </div>
+    <div class="box-body">
+      <%= form_for @borrower, :url => borrower_path, :method => :put, :html => {:class => "form-horizontal", :id => "income_form"} do |f| %>
+        <%= f.hidden_field :user_id, :value => @borrower.user_id  %>
+        <%= render :partial => 'form', :locals => {:f => f } %>
+        <div class="box-footer">
+          <div class="col-md-offset-1">
+            <%= f.submit "Update borrower", :class => "btn btn-success"     %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

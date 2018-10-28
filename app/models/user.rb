@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   has_many :expenses
   has_many :expense_categories
   has_many :transaction_records
+  has_many :borrowers
 end
