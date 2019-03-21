@@ -9,7 +9,17 @@
 		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 		<!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-	</head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <% id = ENV["google_tracking_id"] %>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<%= id %>"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '<%= id %>');
+    </script>
+
+  </head>
 	<body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
     	<%= render :partial => '/shared/navigation_bar' %>

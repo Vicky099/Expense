@@ -80,7 +80,7 @@ Rails.application.configure do
   # Email configuration
   config.action_mailer.default_url_options = { :host => 'http://vexpense-prod.herokuapp.com' }
 
-  config.assets.compile = true
+  #config.assets.compile = true
 
   ActionMailer::Base.smtp_settings = {
   :address        => 'smtp.sendgrid.net',
