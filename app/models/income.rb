@@ -1,4 +1,4 @@
-class Income < ActiveRecord::Base
+class Income < ApplicationRecord
   belongs_to :user
   belongs_to :income_category
   has_one :transaction_record, as: :process, :dependent => :destroy

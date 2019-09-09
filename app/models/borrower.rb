@@ -1,4 +1,4 @@
-class Borrower < ActiveRecord::Base
+class Borrower < ApplicationRecord
 	has_many :borrower_records, foreign_key: "borrower_id", class_name: "Expense"
 	belongs_to :user
 
