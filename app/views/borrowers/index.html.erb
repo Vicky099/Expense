@@ -32,20 +32,16 @@
           <tr>
             <th>Name</th>
             <th>Email</th>
+            <th>Remain Amount</th>
             <th>Relation</th>
             <th>Actions</th>
           </tr>
           <% @borrowers.each do |borrower| %>
             <tr>
-              <td>
-                <%= borrower.name %>
-              </td>
-              <td>
-                <%= borrower.email %>
-              </td>
-              <td>
-                <%= borrower.relation_with_payer %>
-              </td>
+              <td><%= borrower.name %></td>
+              <td><%= borrower.email %></td>
+              <td><%= remain_amount(borrower) %></td>
+              <td><%= borrower.relation_with_payer %></td>
               <td>
                 <%= link_to "Edit" , edit_borrower_path(borrower.id) %> / <%= link_to "Delete" , borrower_path(borrower.id), method: :delete %>
               </td>

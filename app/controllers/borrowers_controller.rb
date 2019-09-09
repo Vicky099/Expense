@@ -4,7 +4,7 @@ class BorrowersController < ApplicationController
 	before_action :find_borrower, only:[:edit, :update, :destroy]
 
 	def index
-		@borrowers = current_user.borrowers.order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
+		@borrowers = current_user.borrowers.includes(:borrower_records).order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
 	end
 
 	def new

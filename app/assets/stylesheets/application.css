@@ -22,3 +22,7 @@
 .error{
 	color: red;
 }
+
+.box-body{
+	overflow: scroll
+}
